@@ -1,0 +1,35 @@
+server:
+  port: 8080
+  undertow:
+    accesslog:
+      enabled: true
+      dir: ../logs
+      pattern: common
+      prefix: access_log
+      suffix: .log
+    io-threads: 4
+    worker-threads: 32
+    buffer-size: 1048576
+    direct-buffers: false
+
+spring:
+  application:
+    name: cloud-grpc-client
+  sleuth:
+    sampler:
+      probability: 1
+
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+
+  grpc:
+    client:
+      cloud-grpc-server:
+        serviceNames: Simple,Simple2
+        enableKeepAlive: true
+        keepAliveWithoutCalls: true
+        negotiationType: plaintext

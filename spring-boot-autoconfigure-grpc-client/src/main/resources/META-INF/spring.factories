@@ -1,0 +1,6 @@
+# AutoConfiguration
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+com.yx.grpc.client.autoconfigure.GrpcClientAutoConfiguration,\
+com.yx.grpc.client.autoconfigure.GrpcClientHealthAutoConfiguration,\
+com.yx.grpc.client.autoconfigure.GrpcClientSecurityAutoConfiguration,\
+com.yx.grpc.client.autoconfigure.GrpcDiscoveryClientAutoConfiguration

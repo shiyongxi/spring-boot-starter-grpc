@@ -1,0 +1,8 @@
+# AutoConfiguration
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+com.yx.grpc.server.autoconfigure.metadata.GrpcMetadataConsulConfiguration,\
+com.yx.grpc.server.autoconfigure.metadata.GrpcMetadataEurekaConfiguration,\
+com.yx.grpc.server.autoconfigure.metadata.GrpcMetadataNacosConfiguration,\
+com.yx.grpc.server.autoconfigure.GrpcServerAutoConfiguration,\
+com.yx.grpc.server.autoconfigure.GrpcServerFactoryAutoConfiguration,\
+com.yx.grpc.server.autoconfigure.GrpcServerSecurityAutoConfiguration
