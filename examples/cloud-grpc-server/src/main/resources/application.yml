@@ -18,6 +18,11 @@ spring:
   sleuth:
     sampler:
       probability: 1
+
+  grpc:
+    server:
+      port: 9990
+
 eureka:
   instance:
     prefer-ip-address: true
@@ -29,7 +34,3 @@ eureka:
     fetch-registry: true
     service-url:
       defaultZone: http://localhost:8761/eureka/
-
-  grpc:
-    server:
-      port: 9990

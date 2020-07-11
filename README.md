@@ -7,9 +7,18 @@
 ````xml
 <dependency>
   <groupId>com.yx</groupId>
-  <artifactId>spring-boot-autoconfigure-grpc-server</artifactId>
+  <artifactId>spring-boot-starter-grpc-server</artifactId>
   <version>0.0.1-SNAPSHOT</version>
 </dependency>
+````
+
+使用 application.yml 配置
+
+````yaml
+spring:
+  grpc:
+    server:
+      port: 9990
 ````
 
 在服务端接口实现类上添加 `@Service` 注解。
@@ -34,7 +43,7 @@ public class GrpcServerService extends SimpleGrpc.SimpleImplBase {
 ````xml
 <dependency>
   <groupId>com.yx</groupId>
-  <artifactId>spring-boot-autoconfigure-grpc-client</artifactId>
+  <artifactId>spring-boot-starter-grpc-client</artifactId>
   <version>0.0.1-SNAPSHOT</version>
 </dependency>
 ````
@@ -117,4 +126,47 @@ public class GrpcServerService extends SimpleGrpc.SimpleImplBase {
         </exclusion>
     </exclusions>
 </dependency>
+````
+
+## 注册中心配置
+
+### 1. 以 eureka 为注册中心
+
+您可以在 Maven 中这样使用
+
+````xml
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+        </dependency>
+````
+
+客户端 application.yml 配置
+
+````yaml
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    # 改变eureka server对客户端健康检测的方式，改用actuator的/health端点来检测
+    healthcheck:
+      enabled: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+````
+
+服务端 application.yml 配置
+
+````yaml
+eureka:
+  instance:
+    prefer-ip-address: true
+    status-page-url-path: /actuator/info
+    health-check-url-path: /actuator/health
+    instanceId: ${spring.application.name}:${vcap.application.instance_id:${spring.application.instance_id:${random.value}}}
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
 ````
