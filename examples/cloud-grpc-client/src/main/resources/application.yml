@@ -23,6 +23,9 @@ eureka:
   instance:
     prefer-ip-address: true
   client:
+    # 改变eureka server对客户端健康检测的方式，改用actuator的/health端点来检测
+    healthcheck:
+      enabled: true
     service-url:
       defaultZone: http://localhost:8761/eureka/
 

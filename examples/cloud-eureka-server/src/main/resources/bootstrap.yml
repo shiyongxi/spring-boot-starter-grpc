@@ -11,15 +11,16 @@ eureka:
     prefer-ip-address: true
     status-page-url-path: /actuator/info
     health-check-url-path: /actuator/health
-    lease-expiration-duration-in-seconds: 30
-    lease-renewal-interval-in-seconds: 30
+    lease-expiration-duration-in-seconds: 30 #表示eureka server至上一次收到client的心跳之后，等待下一次心跳的超时时间，在这个时间内若没收到下一次心跳，则将移除该instance。
+    lease-renewal-interval-in-seconds: 30    #表示eureka client发送心跳给server端的频率
   client:
-    registerWithEureka: false
-    fetchRegistry: false
+    registerWithEureka: false  #禁止自己当做服务注册
+    fetchRegistry: false       #屏蔽注册信息
     serviceUrl:
-            defaultZone: http://localhost:8761/eureka/
+      defaultZone: http://localhost:8761/eureka/
   server:
-    enable-self-preservation: false
+    enable-self-preservation: false    #设为false，关闭自我保护
+    eviction-interval-timer-in-ms: 60000 # 清理间隔（单位毫秒，默认是60*1000）
 
 endpoints:
  shutdown:
