@@ -13,6 +13,8 @@
         <module>spring-boot-autoconfigure-grpc-server</module>
         <module>spring-boot-grpc-common</module>
         <module>examples</module>
+        <module>spring-boot-starter-grpc-client</module>
+        <module>spring-boot-starter-grpc-server</module>
     </modules>
 
     <properties>

@@ -14,7 +14,7 @@
     <dependencies>
         <dependency>
             <groupId>com.yx</groupId>
-            <artifactId>spring-boot-autoconfigure-grpc-server</artifactId>
+            <artifactId>spring-boot-starter-grpc-server</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
